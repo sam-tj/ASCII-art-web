@@ -46,8 +46,8 @@ function updateASCIIart() {
 
   var cols = dst.cols;
   var rows = dst.rows;
-  console.log(cols);
-  console.log(rows);
+  // console.log(cols);
+  // console.log(rows);
   var imageDataArr = [];
   for (var i = 0; i < rows; i++) {
     var data = [];
@@ -67,7 +67,7 @@ function updateASCIIart() {
     imageDataArr.push(data);
   }
   imageASCII = imageDataArr.map((row) => row.join(delimiterChar)).join("\n");
-  // console.log(imageASCII);
+  console.log(imageASCII);
   document.getElementById("outputDemo").innerHTML = imageASCII;
 }
 

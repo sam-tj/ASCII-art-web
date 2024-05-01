@@ -11,6 +11,7 @@ inputElement.addEventListener(
 var mat = null;
 var mat_resize = null;
 var moduleLoaded = false;
+var imageASCII = "Try again to copy :)";
 
 function resizeImage() {
   var cols_ori = mat.cols;
@@ -30,8 +31,8 @@ imgElement.onload = function () {
 };
 
 function copyToClipboard() {
-  const code = document.getElementById("outputDemo");
-  navigator.clipboard.writeText(code.innerHTML);
+  // const code = document.getElementById("outputDemo");
+  navigator.clipboard.writeText(imageASCII);
 }
 
 function updateASCIIart() {

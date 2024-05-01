@@ -76,7 +76,7 @@ var Module = {
   // https://emscripten.org/docs/api_reference/module.html#Module.onRuntimeInitialized
   onRuntimeInitialized() {
     document.getElementById("body").style.display = "block";
-    imgElement.src = "img_girl.jpg";
+    imgElement.src = "extras/img_girl.jpg";
     mat = new cv.Mat();
     mat_resize = new cv.Mat();
   },

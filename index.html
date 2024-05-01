@@ -39,12 +39,10 @@
           value="127"
           oninput="updateASCIIart()"
         />
-      </div>
-      <div>
+        <br />
         Number of columns for text output
         <input type="number" id="reqColumns" min="10" value="50" onchange="resizeImage()" />
-      </div>
-      <div>
+        <br />
         Character for light space.
         <input
           type="text"
@@ -53,8 +51,10 @@
           value="#"
           onchange="updateASCIIart()"
         />
+        <br />
         Character for dark space.
         <input type="text" id="darkSpaceChar" maxlength="1" value=" " onchange="updateASCIIart()" />
+        <br />
         Character to separate white and dark space.
         <input type="text" id="delimiterChar" maxlength="1" value="," onchange="updateASCIIart()" />
       </div>

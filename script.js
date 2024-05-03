@@ -29,9 +29,6 @@ function resizeImage() {
   document.getElementById(
     "outputSizeInfo"
   ).innerHTML = `The output text will have ${y} rows and ${x} columns.`;
-  var fontSizeScale = 0.0006 * Math.pow(x, 2) - 0.333 * x + 16.65;
-  // console.log(fontSizeScale);
-  document.getElementById("contentPblock").style.fontSize = `${fontSizeScale}vw`;
   updateASCIIart();
 }
 
@@ -106,7 +103,7 @@ var Module = {
   // https://emscripten.org/docs/api_reference/module.html#Module.onRuntimeInitialized
   onRuntimeInitialized() {
     document.getElementById("body").style.display = "block";
-    imgElement.src = "extras/img_girl.jpg";
+    imgElement.src = "extras/sample.png";
     mat = new cv.Mat();
     mat_resize = new cv.Mat();
   },

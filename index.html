@@ -45,7 +45,7 @@
             name="th_value"
             min="0"
             max="255"
-            value="127"
+            value="220"
             oninput="updateASCIIart()"
           />
           <br />
@@ -129,13 +129,24 @@
         border-radius: 16px;
         display: inline-block;
         padding: 15px;
-        /* max-width: 90vw; */
+        /* max-width: 80vw; */
         /* max-height: 50vh; */
         /* transform-origin: 0% 0% 0px; */
         /* transform: scale(0.1); */
+        /* overflow: hidden; */
       "
     >
-      <p id="contentPblock">
+      <p
+        id="contentPblock"
+        style="
+          /* transform-origin: top left; */
+          /* transform: scale(0.1); */
+          display: inline-block;
+          /* max-width: 80vw; */
+          /* max-height: 50vh; */
+          font-size: 0.8rem;
+        "
+      >
         <code id="outputDemo" style="white-space: pre"></code>
       </p>
     </div>

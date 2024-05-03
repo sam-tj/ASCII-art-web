@@ -12,15 +12,19 @@ var mat = null;
 var mat_resize = null;
 var moduleLoaded = false;
 var imageASCII = "Try again to copy :)";
+var advancedOptionsEnable = false;
 
 function resizeImage() {
   var cols_ori = mat.cols;
   var rows_ori = mat.rows;
   var x = parseInt(document.getElementById("reqColumns").value);
-  var y = (x * rows_ori) / cols_ori;
+  var y = parseInt((x * rows_ori) / cols_ori);
   let dsize = new cv.Size(x, y);
   cv.resize(mat, mat_resize, dsize, 0, 0, cv.INTER_LINEAR);
   cv.imshow("canvasOutput", mat_resize);
+  document.getElementById(
+    "outputSizeInfo"
+  ).innerHTML = `The output text will have ${y} rows and ${x} columns.`;
   updateASCIIart();
 }
 
@@ -35,10 +39,29 @@ function copyToClipboard() {
   navigator.clipboard.writeText(imageASCII);
 }
 
+function advancedOptions() {
+  advancedOptionsEnable = !advancedOptionsEnable;
+  if (advancedOptionsEnable) {
+    document.getElementById("divAdvFeatures").style.display = "block";
+    document.getElementById("divNormFeatures").style.display = "none";
+  } else {
+    document.getElementById("divAdvFeatures").style.display = "none";
+    document.getElementById("divNormFeatures").style.display = "block";
+  }
+}
+
 function updateASCIIart() {
-  var th_value = parseInt(document.getElementById("th_value").value);
   let dst = new cv.Mat();
-  cv.threshold(mat_resize, dst, Number(th_value), 255, cv.THRESH_BINARY);
+  if (advancedOptionsEnable) {
+    var thType = parseInt(document.getElementById("thType").value);
+    var blockSize = parseInt(document.getElementById("blockSize").value);
+    var constant_c = parseInt(document.getElementById("constant_c").value);
+
+    cv.adaptiveThreshold(mat_resize, dst, 255, thType, cv.THRESH_BINARY, blockSize, constant_c);
+  } else {
+    var th_value = parseInt(document.getElementById("th_value").value);
+    cv.threshold(mat_resize, dst, Number(th_value), 255, cv.THRESH_BINARY);
+  }
   cv.imshow("canvasOutput", dst);
 
   const lightSpaceChar = document.getElementById("lightSpaceChar").value;

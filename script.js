@@ -30,7 +30,7 @@ function resizeImage() {
     "outputSizeInfo"
   ).innerHTML = `The output text will have ${y} rows and ${x} columns.`;
   var fontSizeScale = 0.0006 * Math.pow(x, 2) - 0.333 * x + 16.65;
-  console.log(fontSizeScale);
+  // console.log(fontSizeScale);
   document.getElementById("contentPblock").style.fontSize = `${fontSizeScale}vw`;
   updateASCIIart();
 }
@@ -98,7 +98,7 @@ function updateASCIIart() {
     imageDataArr.push(data);
   }
   imageASCII = imageDataArr.map((row) => row.join(delimiterChar)).join("\n");
-  // console.log(imageASCII);
+  console.log(imageASCII);
   document.getElementById("outputDemo").innerHTML = imageASCII;
 }
 

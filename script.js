@@ -18,6 +18,10 @@ function resizeImage() {
   var cols_ori = mat.cols;
   var rows_ori = mat.rows;
   var x = parseInt(document.getElementById("reqColumns").value);
+  if (x < 5) {
+    x = 5;
+    document.getElementById("reqColumns").value = 5;
+  }
   var y = parseInt((x * rows_ori) / cols_ori);
   let dsize = new cv.Size(x, y);
   cv.resize(mat, mat_resize, dsize, 0, 0, cv.INTER_LINEAR);

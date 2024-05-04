@@ -102,24 +102,36 @@ function updateASCIIart() {
   }
   imageASCII = imageDataArr.map((row) => row.join(delimiterChar)).join("\n");
   document.getElementById("outputDemo").innerHTML = imageASCII;
-
+  document.getElementById("saveFrame").innerHTML = imageASCII;
   if (document.getElementById("showOnConsole").checked) {
     console.log(imageASCII);
   }
+}
+
+function updateCharColor(value) {
+  document.getElementById("outputDiv").style.color = value;
+}
+
+function updateBackColor(value) {
+  document.getElementById("outputDiv").style.background = value;
+  document.getElementById("saveFrame").style.background = value;
+  document.getElementById("outputDemo").style.background = value;
 }
 
 function downloadImage() {
   var d = new Date();
   var filename = `image_${d.getHours()}_${d.getMinutes()}.png`;
   const anchor = document.createElement("a");
-
-  html2canvas(document.getElementById("outputDiv"), { scale: 1 }).then((canvas) => {
+  var saveFrame = document.getElementById("saveFrame");
+  saveFrame.style.display = "inline-block";
+  html2canvas(saveFrame, { scale: 1 }).then((canvas) => {
     const data = canvas.toDataURL("image/png;base64");
     anchor.href = data;
     anchor.download = filename;
     document.body.appendChild(anchor);
     anchor.click();
     document.body.removeChild(anchor);
+    saveFrame.style.display = "none";
   });
 }
 

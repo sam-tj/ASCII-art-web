@@ -35,7 +35,7 @@ body {
   font-family: monospace;
   text-align: left;
   overflow-x: scroll;
-  overflow-y: scroll;
+  overflow-y: scroll;  
 }
 
 .terminal pre {
@@ -44,4 +44,11 @@ body {
   padding: 10px;
   transform-origin: top left;
   transform: scale(1);
+}
+
+.terminal code {
+  display: inline-block;
+  background-color: black;  
+  white-space: pre;
+  padding: 20px;
 }

@@ -108,6 +108,21 @@ function updateASCIIart() {
   }
 }
 
+function downloadImage() {
+  var d = new Date();
+  var filename = `image_${d.getHours()}_${d.getMinutes()}.png`;
+  const anchor = document.createElement("a");
+
+  html2canvas(document.getElementById("outputDemo"), { scale: 1 }).then((canvas) => {
+    const data = canvas.toDataURL("image/png;base64");
+    anchor.href = data;
+    anchor.download = filename;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  });
+}
+
 var Module = {
   // https://emscripten.org/docs/api_reference/module.html#Module.onRuntimeInitialized
   onRuntimeInitialized() {

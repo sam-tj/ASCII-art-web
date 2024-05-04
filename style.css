@@ -17,11 +17,11 @@ body {
   display: block;
 }
 
-divAdvFeatures {
+.divAdvFeatures {
   display: none;
 }
 
-divOutput {
+.divOutput {
   padding-bottom: 15px;
 }
 

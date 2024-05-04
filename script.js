@@ -43,6 +43,12 @@ function copyToClipboard() {
   navigator.clipboard.writeText(imageASCII);
 }
 
+function resizeOutputScale() {
+  var resizeOutputScaleVal = parseInt(document.getElementById("resizeOutputScaleVal").value) / 100;
+  // console.log(resizeOutputScaleVal);
+  document.getElementById("outputDemo").style.transform = "scale(" + resizeOutputScaleVal + ")";
+}
+
 function advancedOptions() {
   advancedOptionsEnable = !advancedOptionsEnable;
   if (advancedOptionsEnable) {
@@ -95,8 +101,11 @@ function updateASCIIart() {
     imageDataArr.push(data);
   }
   imageASCII = imageDataArr.map((row) => row.join(delimiterChar)).join("\n");
-  console.log(imageASCII);
   document.getElementById("outputDemo").innerHTML = imageASCII;
+
+  if (document.getElementById("showOnConsole").checked) {
+    console.log(imageASCII);
+  }
 }
 
 var Module = {

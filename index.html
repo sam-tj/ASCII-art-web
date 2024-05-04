@@ -12,9 +12,10 @@
       content="ASCII, ASCII-art, art, code-signature, sign your code,GitHub,Code,Sameer,Tuteja"
     />
     <meta name="author" content="Sameer Tuteja" />
+    <link rel="stylesheet" href="style.css" />
     <title>ASCII Art</title>
   </head>
-  <body style="display: none" id="body">
+  <body id="body">
     <div>
       <h2>GET ASCII ART FOR YOUR CODES OR GIT PROFILES</h2>
       <h3>For demo, check your console log.</h3>
@@ -26,18 +27,15 @@
           Open image <input type="file" accept="image/png, image/jpeg" id="fileInput" name="file" />
         </div>
       </div>
-      <div
-        class="inputoutput"
-        style="display: flex; max-width: 90vw; height: 50vh; overflow: hidden"
-      >
-        <canvas id="canvasOutput" style="flex-shrink: 0"></canvas>
+      <div class="inputoutput thImageShow">
+        <canvas id="canvasOutput"></canvas>
       </div>
       <hr />
       <div>
         <br />
         <button type="button" onclick="advancedOptions()">Advanced Options</button>
         <br />
-        <div id="divNormFeatures" style="display: block">
+        <div id="divNormFeatures" class="divNormFeatures">
           Threshold Value
           <input
             type="range"
@@ -50,7 +48,7 @@
           />
           <br />
         </div>
-        <div id="divAdvFeatures" style="display: none">
+        <div id="divAdvFeatures" class="divAdvFeatures">
           Type
           <select id="thType" onchange="updateASCIIart()">
             <option value="0" label="Mean">cv.ADAPTIVE_THRESH_MEAN_C</option>
@@ -117,13 +115,26 @@
       </div>
     </div>
     <hr />
-    <div style="padding-bottom: 15px">
+    <div class="divOutput">
       <button type="button" onclick="copyToClipboard()">Copy to clipboard</button>
+
+      <label><input id="showOnConsole" type="checkbox" checked />Show on console.log</label>
+
       <div class="caption">Output ASCII text</div>
       <div id="outputSizeInfo"></div>
+      <br />
+      Resize output
+      <input
+        type="range"
+        id="resizeOutputScaleVal"
+        min="1"
+        step="1"
+        max="100"
+        oninput="resizeOutputScale()"
+      />
     </div>
     <!-- <div style="max-width: 90vw; max-height: 70vh; overflow: hidden"> -->
-    <div
+    <!-- <div
       style="
         border-style: solid;
         border-radius: 16px;
@@ -135,8 +146,8 @@
         /* transform: scale(0.1); */
         /* overflow: hidden; */
       "
-    >
-      <p
+    > -->
+    <!-- <p
         id="contentPblock"
         style="
           /* transform-origin: top left; */
@@ -146,9 +157,19 @@
           /* max-height: 50vh; */
           font-size: 0.8rem;
         "
-      >
-        <code id="outputDemo" style="white-space: pre"></code>
-      </p>
+      > -->
+    <!-- <code
+      style="
+        white-space: pre;
+        font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+          Bitstream Vera Sans Mono, Courier New, monospace, serif;
+        background-color: black;
+        color: white;
+      "
+    ></code> -->
+    <div class="terminal">
+      <pre id="outputDemo"></pre>
+      <!-- </p> -->
     </div>
     <!-- </div> -->
     <script async src="https://docs.opencv.org/4.9.0/opencv.js" type="text/javascript"></script>

@@ -113,7 +113,7 @@ function downloadImage() {
   var filename = `image_${d.getHours()}_${d.getMinutes()}.png`;
   const anchor = document.createElement("a");
 
-  html2canvas(document.getElementById("outputDemo"), { scale: 1 }).then((canvas) => {
+  html2canvas(document.getElementById("outputDiv"), { scale: 1 }).then((canvas) => {
     const data = canvas.toDataURL("image/png;base64");
     anchor.href = data;
     anchor.download = filename;

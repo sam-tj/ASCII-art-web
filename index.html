@@ -3,38 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="ASCII art creator. Upload your image and get the ASCII map. Paste it directly in your codes or log files."
+    <title>Document</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
     />
-    <meta
-      name="keywords"
-      content="ASCII, ASCII-art, art, code-signature, sign your code,GitHub,Code,Sameer,Tuteja"
-    />
-    <meta name="author" content="Sameer Tuteja" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web/"
+        }
+      }
+    </script>
+    <script type="module">
+      import "@material/web/all.js";
+      import { styles as typescaleStyles } from "@material/web/typography/md-typescale-styles.js";
+
+      document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+    <style>
+      .tabcontent {
+        color: black;
+        display: none;
+      }
+    </style>
     <link rel="stylesheet" href="style.css" />
-    <title>ASCII Art</title>
   </head>
   <body id="body">
-    <div>
-      <h2>GET ASCII ART FOR YOUR CODES OR GIT PROFILES</h2>
-      <h3>For demo, check your console log.</h3>
-      <h3>Improved interface coming soon!!!</h3>
-      <hr />
-      <div class="inputoutput">
-        <img style="display: none" id="imageSrc" alt="No Image" />
-        <div class="caption">
-          Open image <input type="file" accept="image/png, image/jpeg" id="fileInput" name="file" />
+    <div style="width: 80%; margin: auto">
+      <div id="Home" class="tabcontent" style="display: block">
+        <h3>Home</h3>
+        <h4>GET ASCII ART FOR YOUR CODES OR GIT PROFILES</h4>
+        <p>For demo, check your console log. Improved interface coming soon!!!</p>
+      </div>
+
+      <div id="Source" class="tabcontent">
+        <h3>Source</h3>
+        <p></p>
+        <div class="inputoutput">
+          <div class="caption">
+            Open image
+            <input type="file" accept="image/png, image/jpeg" id="fileInput" name="file" />
+          </div>
+          <div style="overflow: hidden">
+            <img id="imageSrc" alt="No Image" />
+          </div>
         </div>
       </div>
-      <div class="inputoutput thImageShow">
-        <canvas id="canvasOutput"></canvas>
-      </div>
-      <hr />
-      <div>
-        <br />
+
+      <div id="Fix" class="tabcontent">
+        <h3>Fix</h3>
+        <p>Fix the image for output.</p>
+        <div class="inputoutput thImageShow">
+          <canvas id="canvasOutput"></canvas>
+        </div>
         <button type="button" onclick="advancedOptions()">Advanced Options</button>
-        <br />
         <div id="divNormFeatures" class="divNormFeatures">
           Threshold Value
           <input
@@ -79,8 +103,11 @@
             oninput="updateASCIIart()"
           />
         </div>
-        <br />
-        <hr />
+      </div>
+
+      <div id="Output" class="tabcontent">
+        <h3>Output</h3>
+        <p>Set the output for your image.</p>
         <div>
           Number of columns for text output
           <input type="number" id="reqColumns" min="5" value="50" onchange="resizeImage()" />
@@ -130,69 +157,78 @@
           /> -->
           <input type="text" value="#000000" data-coloris onchange="updateBackColor(this.value)" />
         </div>
+        <br />
+        Resize output
+        <input
+          type="range"
+          id="resizeOutputScaleVal"
+          min="1"
+          step="1"
+          max="100"
+          oninput="resizeOutputScale()"
+        />
+        <div id="outputDiv" class="terminal">
+          <!-- <pre id="outputDemo"></pre> -->
+          <pre id="outputDemo"></pre>
+          <!-- </p> -->
+          <code id="saveFrame" style="display: none"></code>
+        </div>
+      </div>
+
+      <div id="Download" class="tabcontent">
+        <h3>Download</h3>
+        <p>Download the content.</p>
+
+        <div class="divOutput">
+          <button type="button" onclick="copyToClipboard()">Copy to clipboard</button>
+
+          <label><input id="showOnConsole" type="checkbox" checked />Show on console.log</label>
+
+          <div class="caption">Output ASCII text</div>
+          <div id="outputSizeInfo"></div>
+          <button onclick="downloadImage()">Download as Image</button>
+        </div>
       </div>
     </div>
-    <hr />
-    <div class="divOutput">
-      <button type="button" onclick="copyToClipboard()">Copy to clipboard</button>
 
-      <label><input id="showOnConsole" type="checkbox" checked />Show on console.log</label>
+    <footer id="body" style="bottom: 0; left: 0; position: fixed; width: 100%">
+      <div style="width: 80%; margin: auto; text-align: center; background-color: #cac4d0">
+        <md-tabs>
+          <md-primary-tab title="Home">
+            <md-icon slot="icon">home</md-icon>
+            Home
+          </md-primary-tab>
+          <md-primary-tab title="Source">
+            <md-icon slot="icon">upload_file</md-icon>
+            Source
+          </md-primary-tab>
+          <md-primary-tab title="Fix">
+            <md-icon slot="icon">tune</md-icon>
+            Fix
+          </md-primary-tab>
+          <md-primary-tab title="Output">
+            <md-icon slot="icon">terminal</md-icon>
+            Output
+          </md-primary-tab>
+          <md-primary-tab title="Download">
+            <md-icon slot="icon">file_download</md-icon>
+            Download
+          </md-primary-tab>
+        </md-tabs>
+        © Sameer Tuteja
+      </div>
+    </footer>
+    <script>
+      var tabs = document.querySelector("md-tabs");
 
-      <div class="caption">Output ASCII text</div>
-      <div id="outputSizeInfo"></div>
-      <button onclick="downloadImage()">Download as Image</button>
-      <br />
-      Resize output
-      <input
-        type="range"
-        id="resizeOutputScaleVal"
-        min="1"
-        step="1"
-        max="100"
-        oninput="resizeOutputScale()"
-      />
-    </div>
-    <!-- <div style="max-width: 90vw; max-height: 70vh; overflow: hidden"> -->
-    <!-- <div
-      style="
-        border-style: solid;
-        border-radius: 16px;
-        display: inline-block;
-        padding: 15px;
-        /* max-width: 80vw; */
-        /* max-height: 50vh; */
-        /* transform-origin: 0% 0% 0px; */
-        /* transform: scale(0.1); */
-        /* overflow: hidden; */
-      "
-    > -->
-    <!-- <p
-        id="contentPblock"
-        style="
-          /* transform-origin: top left; */
-          /* transform: scale(0.1); */
-          display: inline-block;
-          /* max-width: 80vw; */
-          /* max-height: 50vh; */
-          font-size: 0.8rem;
-        "
-      > -->
-    <!-- <code
-      style="
-        white-space: pre;
-        font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-          Bitstream Vera Sans Mono, Courier New, monospace, serif;
-        background-color: black;
-        color: white;
-      "
-    ></code> -->
-    <div id="outputDiv" class="terminal">
-      <!-- <pre id="outputDemo"></pre> -->
-      <pre id="outputDemo"></pre>
-      <!-- </p> -->
-      <code id="saveFrame" style="display: none"></code>
-    </div>
-    <!-- </div> -->
+      tabs.addEventListener("change", (event) => {
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        document.getElementById(event.target.activeTab.title).style.display = "block";
+      });
+    </script>
     <script async src="https://docs.opencv.org/4.9.0/opencv.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js"></script>
     <link
@@ -203,9 +239,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
-<!-- https://stackoverflow.com/questions/14142378/how-can-i-fill-a-div-with-an-image-while-keeping-it-proportional -->
-<!-- https://stackoverflow.com/questions/43692714/how-to-zoom-container-div-and-all-its-contents-to-a-specific-size -->
-<!-- https://stackoverflow.com/questions/14431411/pure-css-to-make-font-size-responsive-based-on-dynamic-amount-of-characters -->
-
-<!-- https://codepen.io/koseare/pen/NWpMjeP -->

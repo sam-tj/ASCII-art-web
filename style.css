@@ -2,15 +2,23 @@ body {
   display: none;
 }
 
+.imageSrcLayout{
+  width: 100%;
+}
+
 .thImageShow {
-  display: flex;
-  max-width: 90vw;
-  height: 50vh;
-  overflow: hidden;
+  /* display: flex; */
+  /* max-width: 80vw; */
+  /* overflow: hidden; */
+  height: 80vw;
 }
 
 .thImageShow canvas {
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
+}
+
+.canvasWidth {
+  width: 75vw;
 }
 
 .divNormFeatures {

@@ -14,6 +14,14 @@ var moduleLoaded = false;
 var imageASCII = "Try again to copy :)";
 var advancedOptionsEnable = false;
 
+window.onresize = function () {
+  if (window.screen.width >= 500) {
+    document.getElementById("bottom_tabs").style.width = "80%";
+  } else {
+    document.getElementById("bottom_tabs").style.width = "100%";
+  }
+};
+
 function resizeImage() {
   var cols_ori = mat.cols;
   var rows_ori = mat.rows;

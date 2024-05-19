@@ -47,7 +47,7 @@
             <input type="file" accept="image/png, image/jpeg" id="fileInput" name="file" />
           </div>
           <div style="overflow: hidden">
-            <img id="imageSrc" alt="No Image" />
+            <img id="imageSrc" alt="No Image" class="imageSrcLayout" />
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@
         <h3>Fix</h3>
         <p>Fix the image for output.</p>
         <div class="inputoutput thImageShow">
-          <canvas id="canvasOutput"></canvas>
+          <canvas id="canvasOutput" class="canvasWidth"></canvas>
         </div>
         <button type="button" onclick="advancedOptions()">Advanced Options</button>
         <div id="divNormFeatures" class="divNormFeatures">
@@ -182,7 +182,7 @@
         <div class="divOutput">
           <button type="button" onclick="copyToClipboard()">Copy to clipboard</button>
 
-          <label><input id="showOnConsole" type="checkbox" checked />Show on console.log</label>
+          <label><input id="showOnConsole" type="checkbox" />Show on console.log</label>
 
           <div class="caption">Output ASCII text</div>
           <div id="outputSizeInfo"></div>
@@ -192,7 +192,10 @@
     </div>
 
     <footer id="body" style="bottom: 0; left: 0; position: fixed; width: 100%">
-      <div style="width: 80%; margin: auto; text-align: center; background-color: #cac4d0">
+      <div
+        id="bottom_tabs"
+        style="width: inherit; margin: auto; text-align: center; background-color: #cac4d0"
+      >
         <md-tabs>
           <md-primary-tab title="Home">
             <md-icon slot="icon">home</md-icon>

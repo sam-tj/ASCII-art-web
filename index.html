@@ -3,7 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      name="description"
+      content="ASCII art creator. Upload your image and get the ASCII map. Paste it directly in your codes or log files."
+    />
+    <meta
+      name="keywords"
+      content="ASCII, ASCII-art, art, code-signature, sign your code,GitHub,Code,Sameer,Tuteja"
+    />
+    <meta name="author" content="Sameer Tuteja" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" type="image/png" href="extras/favicon.png" />
+    <link rel="apple-touch-icon" href="extras/favicon.png" />
+    <title>ASCII Art</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -167,18 +179,7 @@
           max="100"
           oninput="resizeOutputScale()"
         />
-        <div id="outputDiv" class="terminal">
-          <!-- <pre id="outputDemo"></pre> -->
-          <pre id="outputDemo"></pre>
-          <!-- </p> -->
-          <code id="saveFrame" style="display: none"></code>
-        </div>
-      </div>
-
-      <div id="Download" class="tabcontent">
-        <h3>Download</h3>
-        <p>Download the content.</p>
-
+        <br />
         <div class="divOutput">
           <button type="button" onclick="copyToClipboard()">Copy to clipboard</button>
 
@@ -188,7 +189,19 @@
           <div id="outputSizeInfo"></div>
           <button onclick="downloadImage()">Download as Image</button>
         </div>
+        <br />
+        <div id="outputDiv" class="terminal">
+          <!-- <pre id="outputDemo"></pre> -->
+          <pre id="outputDemo"></pre>
+          <!-- </p> -->
+          <code id="saveFrame" style="display: none"></code>
+        </div>
       </div>
+
+      <!-- <div id="Download" class="tabcontent">
+        <h3>Download</h3>
+        <p>Download the content.</p>
+      </div> -->
     </div>
 
     <footer id="body" style="bottom: 0; left: 0; position: fixed; width: 100%">
@@ -213,10 +226,10 @@
             <md-icon slot="icon">terminal</md-icon>
             Output
           </md-primary-tab>
-          <md-primary-tab title="Download">
+          <!-- <md-primary-tab title="Download">
             <md-icon slot="icon">file_download</md-icon>
             Download
-          </md-primary-tab>
+          </md-primary-tab> -->
         </md-tabs>
         © Sameer Tuteja
       </div>

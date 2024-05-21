@@ -4,6 +4,9 @@ body {
 
 .imageSrcLayout{
   width: 100%;
+  max-width: 75vw; 
+  /* max-height: 30vw; */
+  object-fit: contain;
 }
 
 .thImageShow {
@@ -18,7 +21,8 @@ body {
 }
 
 .canvasWidth {
-  width: 75vw;
+  width: 100%;
+  max-width: 75vw;
 }
 
 .divNormFeatures {
